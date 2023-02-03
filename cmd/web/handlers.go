@@ -27,6 +27,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal Server Error", 500)
 		return
 	}
+
 	err = ts.Execute(w, nil)
 	if err != nil {
 		log.Println(err.Error())

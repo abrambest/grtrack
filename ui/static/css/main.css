@@ -18,10 +18,31 @@ body {
   
 }
 
+h1 a{
+    background-image: url("/static/img/music.png"); 
+    background-size: 17%;
+    background-repeat: no-repeat;
+   
+    background-position: 0px 0px;
+
+    padding-left: 50px;
+    position: relative;
+
+
+}
+
 .zag {
-    font-family: 'Barlow Condensed'; color: rgb(238, 219, 53);
+    font-family: 'Barlow Condensed'; color: #3fee2e;
 }
 
 .lnk {
     font-family: 'Barlow Condensed'; color: rgb(255, 255, 255);
+}
+
+footer{
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    bottom: 3%;
+    font-family: 'Barlow Condensed'; color: #3fee2e;
 }
