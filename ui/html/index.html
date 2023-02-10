@@ -7,4 +7,25 @@
 <br>
 <h2 >Привет мир!</h2>
 <p>Тут что-то будет - но это не точно.</p>
+<br>
+<br>
+<div class="box">
+    {{range . }}
+    <div class="artist">
+        <a href="/artist/{{.Id}}">
+            <img class="artist-img" src="{{.Image}}" alt="artist image">
+        </a>
+        <div class="artist-name">
+            <br>
+            <H3>{{.Name}}</H3>
+            <br>
+            <br>
+            <br>
+            <br>
+    
+        </div>
+    </div>
+    {{end}}
+</div>
+
 {{end}}
