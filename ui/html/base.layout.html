@@ -1,6 +1,7 @@
 {{define "base"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>{{template "title" .}} Groupie-tracker</title>
@@ -11,9 +12,10 @@
 
 
 
-</style>
+    </style>
 
 </head>
+
 <body link="red" vlink="white">
     <header>
         <h1><a class="lnk" href="/">Groupie-tracker</a></h1>
@@ -21,11 +23,13 @@
     <nav>
         <a class="lnk" href="/">GO home page</a>
     </nav>
+
     <main class="zag">
         {{template "main" .}}
-       
+
     </main>
     {{template "footer" .}}
 </body>
+
 </html>
 {{end}}

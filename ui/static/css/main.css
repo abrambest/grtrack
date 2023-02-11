@@ -58,6 +58,7 @@ footer{
     flex-wrap: wrap;
     justify-content: center;
     
+    
 }
 
 .artist {
@@ -66,6 +67,9 @@ footer{
     margin: 1em;
     text-align: center;
     word-break: break-word;
+    background: rgb(29, 44, 89) none repeat scroll 0% 0%; opacity: 0,5;
+    border-radius: 30px;
+    width: 16%;
     
    
 }
@@ -78,7 +82,26 @@ footer{
     
 
 }
+.artist-page-data{
+    font-size: 135%; color: aliceblue;
+    padding: 5%;
+    text-shadow: black 3px 2px;
+    padding-bottom: 0%;
+    
+   
+    
+
+}
 
 .artist-img {
     border-radius: 30px;
+}
+
+.artist-page-blok {
+    font-size: 100%; color: aliceblue;
+    background: rgb(60, 62, 68) none repeat scroll 0% 0%;
+    
+    text-shadow: black 3px 2px;
+    
+
 }

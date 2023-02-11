@@ -19,7 +19,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", Home)
-	mux.HandleFunc("/artist", ShowArtist)
+	mux.HandleFunc("/artist/", ShowArtist)
 
 	// fileServer := http.FileServer(http.Dir("./ui/static/"))
 	// mux.Handle("/static/", http.StripPrefix("/static", fileServer))
