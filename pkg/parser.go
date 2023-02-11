@@ -21,6 +21,11 @@ type StructArtist struct {
 	Members      []string `json:"members"`
 	CreationDate int      `json:"creationDate"`
 	FirstAlbum   string   `json:"firstAlbum"`
+	DatesLocation map[string][]string
+}
+
+type Relation struct{
+	DatesLocations map[string][]string
 }
 
 var Artist []StructArtist
@@ -38,4 +43,19 @@ func Parser() []StructArtist {
 	err = json.Unmarshal(getContent, &Artist)
 	checkErr(err)
 	return Artist
+}
+
+func ParsRelation(id string){
+	url := "https://groupietrackers.herokuapp.com/api/relation/" + id
+
+	r, err := http.Get(url)
+	checkErr(err)
+
+	defer r.Body.Close()
+
+	getRelatoin, err := ioutil.ReadAll(r.Body)
+	checkErr(err)
+
+	err = json.Unmarshal(getRelatoin, &)
+
 }

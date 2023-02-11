@@ -5,6 +5,7 @@
 {{define "main"}}
 
 <div class="box">
+    
 
     <div class="artist">
         <a href="/artist/{{.Id}}">
@@ -17,7 +18,8 @@
                 <br>
                 Started career in {{.CreationDate}}</H3>
                 <br>
-                {{range .Members}}
+               Members: <br>
+               {{range .Members}}
                 {{.}}
                 <br>
                 {{end}}

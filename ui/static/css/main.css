@@ -67,10 +67,13 @@ footer{
     margin: 1em;
     text-align: center;
     word-break: break-word;
+ 
     background: rgb(29, 44, 89) none repeat scroll 0% 0%; opacity: 0,5;
-    border-radius: 30px;
-    width: 16%;
     
+    height: 8%;
+    border-radius: 30px;
+    width: 200px;
+   
    
 }
 
@@ -95,6 +98,7 @@ footer{
 
 .artist-img {
     border-radius: 30px;
+    width: 200px;
 }
 
 .artist-page-blok {
@@ -103,5 +107,16 @@ footer{
     
     text-shadow: black 3px 2px;
     
+
+}
+
+.borderbgr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: rgb(29, 44, 89) none repeat scroll 0% 0%; opacity: 0,5;
+    
+    width: 16%;
+    border-radius: 30px;
 
 }
