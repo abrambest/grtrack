@@ -9,9 +9,27 @@ import (
 	"strconv"
 )
 
+func NotFoundHandler(w http.ResponseWriter, error string, code int) {
+	files := []string{
+		"./ui/html/error.html",
+		"./ui/html/base.layout.html",
+	}
+	html, err := template.ParseFiles(files...)
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+	w.WriteHeader(code)
+	err = html.Execute(w, http.StatusText(code))
+	if err != nil {
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+}
+
 func Home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+		NotFoundHandler(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
 	if r.Method != http.MethodGet {
@@ -73,8 +91,7 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 
 	err = pkg.CheckNum(id)
 	if err != nil {
-		log.Println(err)
-		http.Error(w, "Internal Server Error", 500)
+		NotFoundHandler(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
 

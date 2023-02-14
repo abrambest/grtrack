@@ -229,4 +229,9 @@ footer{
 
 a {
     text-decoration: none; /* Отменяем подчеркивание у ссылки */
-    }
+}
+
+.error{
+    text-align: center;
+    margin: 20%;
+}
