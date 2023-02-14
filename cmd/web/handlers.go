@@ -71,7 +71,9 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal Server Error", 500)
 		return
 	}
+
 	Info := pkg.Parser()
+	pkg.ParsRelation(strconv.Itoa(id), id)
 
 	err = ts.Execute(w, Info[id-1])
 	if err != nil {
