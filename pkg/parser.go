@@ -2,7 +2,7 @@ package pkg
 
 import (
 	"encoding/json"
-	"fmt"
+	"errors"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -55,5 +55,11 @@ func ParsRelation(id string, idNum int) {
 
 	err = json.Unmarshal(getRelatoin, &Artist[idNum-1])
 	checkErr(err)
-	fmt.Println(Artist[idNum-1].DatesLocation)
+}
+
+func CheckNum(id int) error {
+	if id > Artist[len(Artist)-1].Id || id < 1 {
+		return errors.New("Лишнее Братан!")
+	}
+	return nil
 }

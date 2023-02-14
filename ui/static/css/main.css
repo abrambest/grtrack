@@ -6,6 +6,11 @@
     
 }
 
+html,
+.zag{
+  height: 100%;
+}
+
 body {
     /* background-color: grey; */
     /* font-family: 'Barlow Condensed'; color: aliceblue; */
@@ -16,14 +21,16 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    padding-bottom: 2%;
+    
     
   
 }
 
-body::after{
+/* body::after{
     background-color: white;
     opacity: 0.5;
-}
+} */
 
 h1 a{
     background-image: url("/static/img/music.png"); 
@@ -40,25 +47,60 @@ h1 a{
 
 .zag {
     font-family: 'Barlow Condensed'; color: #3fee2e;
+    height: 100%;
+    /* padding-bottom: 90px; */
+    position: relative;
+    min-height: 100%;
+    
+    
 }
-
+.navlnk{
+    margin-left: 49px;
+    
+}
 .lnk {
-    font-family: 'Barlow Condensed'; color: rgb(255, 255, 255);
-}
+        font-family: 'Barlow Condensed'; color: rgb(255, 255, 255);
+        
+    }
 
 footer{
     
-    text-align: left;
+    text-align: center;
     width: 100%;
-    bottom: 3%;
+   
     font-family: 'Barlow Condensed'; color: #3fee2e;
+    position: static;
+  left: 0;
+  bottom: 0;
+ 
+  height: 80px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  
 }
+
+.footertwo{
+    
+    text-align: center;
+    width: 100%;
+   
+    font-family: 'Barlow Condensed'; color: #3fee2e;
+    position: fixed;
+  left: 0;
+  bottom: 0;
+ 
+  height: 80px;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  
+}
+
 .box {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     
-    
+    padding-bottom: 90px;
 }
 
 .artist {
@@ -68,7 +110,7 @@ footer{
     text-align: center;
     word-break: break-word;
  
-    background: rgb(29, 44, 89) none repeat scroll 0% 0%; opacity: 0,5;
+    background: url("/static/img/Blue_opacity.png");
     
     height: 8%;
     border-radius: 30px;
@@ -99,6 +141,7 @@ footer{
 .artist-img {
     border-radius: 30px;
     width: 200px;
+   
 }
 
 .artist-page-blok {
@@ -120,3 +163,70 @@ footer{
     border-radius: 30px;
 
 }
+
+.artistbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+        
+}
+
+.cardartist {
+  
+    font-family: monospace;
+    margin: 1em;
+    text-align: center;
+    /* word-break: break-word; */
+ 
+    /* background: rgb(29, 44, 89) none repeat scroll 0% 0%; opacity: 0,5;
+    opacity: 0,5; */
+   background: url("/static/img/Blue_opacity.png");
+    /* border-radius: 60px; */
+    
+    height: 8%;
+    border-radius: 30px;
+    width: 70%;
+    display: flex;
+    padding: 2%;
+    padding-bottom: 1%;
+    
+}
+
+.artist-page-data{
+    font-size: 135%; color: aliceblue;
+    padding: 2%;
+    text-shadow: black 3px 2px;
+    width: 40%;
+  
+}
+
+.artist-page-name {
+    font-size: 180%; color: aliceblue;
+    padding: 5%;
+    text-shadow: black 3px 2px;
+   
+
+}
+
+.relations {
+    font-size: 135%; color: aliceblue;
+    padding: 2%;
+    text-shadow: black 3px 2px;
+    /* display: flex; */
+    width: 40%;
+
+}
+
+.key{
+    width: 100%;
+    margin: auto;
+}
+
+.value{
+    width: 40%;
+    margin: auto;
+}
+
+a {
+    text-decoration: none; /* Отменяем подчеркивание у ссылки */
+    }

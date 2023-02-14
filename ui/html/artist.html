@@ -2,42 +2,62 @@
 
 {{define "title"}} Artist page {{end}}
 
+
+
 {{define "main"}}
+<nav class="navlnk">
+    <a class="lnk" href="/">GO home page</a>
+</nav>
 
-<div class="box">
-    
+<div class="artistbox">
 
-    <div class="artist">
+
+    <div class="cardartist">
         <a href="/artist/{{.Id}}">
+            <br>
             <img class="artist-img" src="{{.Image}}" alt="artist image">
+            <br>
+            <br>
+            <H2 class="artist-page-name">{{.Name}}</H2>
         </a>
         <div class="artist-page-data">
-            <br>
-            <H3>{{.Name}}
-                <br>
-                <br>
+
+            <H3>
+
                 Started career in {{.CreationDate}}</H3>
-                <br>
-               Members: <br>
-               {{range .Members}}
-                {{.}}
-                <br>
-                {{end}}
+            <br>
+            Members: <br>
+            {{range .Members}}
+            {{.}}
+            <br>
+            {{end}}
             <br>
             First album date {{.FirstAlbum}}
             <br>
-            <h4>Concert Dates</h4>
-            {{range $key, $value := .DatesLocation}}
-            {{$key}}
-            {{range $value}}
-            {{.}}
-            {{end}}
-            {{end}}
-            <br>
-            
+
+
 
         </div>
-    </div>
+        <div class="relations">
 
+            <h4>Concert Dates</h4>
+            <br>
+            {{range $key, $value := .DatesLocation}}
+            <div class="key">
+                {{$key}}
+            </div>
+            <div class="value">
+                {{range $value}}
+                {{.}}
+
+                {{end}}
+
+            </div>
+            <br>
+            {{end}}
+          
+        </div>
+    </div>
 </div>
 {{end}}
+<footer class="footertwo">Website created in <strong>Golang</strong></footer>

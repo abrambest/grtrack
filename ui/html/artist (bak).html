@@ -1,0 +1,43 @@
+{{template "base" .}}
+
+{{define "title"}} Artist page {{end}}
+
+{{define "main"}}
+
+<div class="box">
+    
+
+    <div class="artist">
+        <a href="/artist/{{.Id}}">
+            <img class="artist-img" src="{{.Image}}" alt="artist image">
+        </a>
+        <div class="artist-page-data">
+            <br>
+            <H3>{{.Name}}
+                <br>
+                <br>
+                Started career in {{.CreationDate}}</H3>
+                <br>
+               Members: <br>
+               {{range .Members}}
+                {{.}}
+                <br>
+                {{end}}
+            <br>
+            First album date {{.FirstAlbum}}
+            <br>
+            <h4>Concert Dates</h4>
+            {{range $key, $value := .DatesLocation}}
+            {{$key}}
+            {{range $value}}
+            {{.}}
+            {{end}}
+            {{end}}
+            <br>
+            
+
+        </div>
+    </div>
+
+</div>
+{{end}}
