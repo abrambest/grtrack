@@ -62,7 +62,6 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	files := []string{
 		"./ui/html/artist.html",
 		"./ui/html/base.layout.html",
-		"./ui/html/footer.partial.html",
 	}
 
 	ts, err := template.ParseFiles(files...)
@@ -72,7 +71,14 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	err = pkg.CheckNum(id)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
 	Info := pkg.Parser()
+
 	pkg.ParsRelation(strconv.Itoa(id), id)
 
 	err = ts.Execute(w, Info[id-1])
