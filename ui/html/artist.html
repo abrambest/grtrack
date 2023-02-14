@@ -26,6 +26,13 @@
             <br>
             First album date {{.FirstAlbum}}
             <br>
+            <h4>Concert Dates</h4>
+            {{range $key, $value := .DatesLocation}}
+            {{$key}}
+            {{range $value}}
+            {{.}}
+            {{end}}
+            {{end}}
             <br>
             
 
