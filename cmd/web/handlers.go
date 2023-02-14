@@ -74,6 +74,7 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	err = pkg.CheckNum(id)
 	if err != nil {
 		log.Println(err)
+		http.Error(w, "Internal Server Error", 500)
 		return
 	}
 
