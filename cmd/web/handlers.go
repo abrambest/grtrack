@@ -16,13 +16,14 @@ func NotFoundHandler(w http.ResponseWriter, error string, code int) {
 	}
 	html, err := template.ParseFiles(files...)
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
+		err = html.Execute(w, http.StatusText(code))
 		return
 	}
 	w.WriteHeader(code)
 	err = html.Execute(w, http.StatusText(code))
+
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
+		err = html.Execute(w, http.StatusText(code))
 		return
 	}
 }
@@ -63,17 +64,19 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi((path.Base(r.URL.Path)))
 	if err != nil {
 		log.Println(err)
+		log.Println("ShowArtist get id")
+		NotFoundHandler(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
 
 	if r.URL.Path != "/artist/"+strconv.Itoa(id) {
-		http.NotFound(w, r)
+		NotFoundHandler(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
 
 	if r.Method != http.MethodGet {
 		w.Header().Set("Allow", http.MethodGet)
-		http.Error(w, "Метод запрещен!", 405)
+		NotFoundHandler(w, "Метод запрещен!", 405)
 		return
 	}
 
@@ -85,12 +88,13 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		NotFoundHandler(w, "Internal Server Error", 500)
 		return
 	}
 
 	err = pkg.CheckNum(id)
 	if err != nil {
+
 		NotFoundHandler(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 		return
 	}
@@ -104,12 +108,4 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 		log.Println(err.Error())
 		http.Error(w, "Internel Server Error", 500)
 	}
-
-	// id, err := strconv.Atoi(r.URL.Query().Get("id"))
-	// if err != nil || id < 1 {
-	// 	http.NotFound(w, r)
-	// 	return
-	// }
-
-	// fmt.Fprintf(w, "Отображение артиста с ID %d...", id)
 }

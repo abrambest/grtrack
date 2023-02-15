@@ -21,9 +21,6 @@ func main() {
 	mux.HandleFunc("/", Home)
 	mux.HandleFunc("/artist/", ShowArtist)
 
-	// fileServer := http.FileServer(http.Dir("./ui/static/"))
-	// mux.Handle("/static/", http.StripPrefix("/static", fileServer))
-
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
 	mux.Handle("/static", http.NotFoundHandler())
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
