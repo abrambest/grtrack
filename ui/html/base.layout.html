@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='/static/css/main.css'>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barlow+Condensed">
     <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 
@@ -17,15 +18,26 @@
 </head>
 
 <body link="red" vlink="white">
-    <header>
+    <div class="headbox">
         <h1><a class="lnk" href="/">Groupie-tracker</a></h1>
-    </header>
-   
-    <main class="zag">
-        {{template "main" .}}
+      
+        </header>
+        
 
-    </main>
-    
+       
+    </div>
+
+ 
+    <header>
+
+        <main class="zag">
+
+            {{template "main" .}}
+
+        </main>
+
+        {{template "footer" .}}
+
 </body>
 
 </html>

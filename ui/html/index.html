@@ -1,8 +1,38 @@
 {{template "base" .}}
- 
+
+
 {{define "title"}} Home page {{end}}
- 
+
+
 {{define "main"}}
+<form method="POST" action="searchform">
+    <input type="text" name="searchform" class="searchline" placeholder="Search" list="search-all">
+
+    <div class="letsgo">
+        <input href="#" class="submit" type="submit" value="let's GO">
+
+    </div>
+    <datalist id="search-all">
+        {{range .}}
+        <option value="{{.Name}}"></option>
+
+            {{range .Members}}
+        <option value="{{.}} - Members"></option>
+            {{end}}
+
+            {{range $key, $value := .DatesLocation}}
+
+        <option value="{{$key}} - Location"></option>
+
+            {{end}}
+        <option value="{{.CreationDate}} - Started career date"></option>
+        <option value="{{.FirstAlbum}} - First Album date"></option>
+
+            {{end}}
+    </datalist>
+
+
+</form>
 <br>
 <br>
 
@@ -18,12 +48,11 @@
             <br>
             <H3>{{.Name}}</H3>
             <br>
-            
-    
+
+
         </div>
     </div>
     {{end}}
 </div>
 
 {{end}}
-<footer>Website created in <strong>Golang © by bshayakh, rakhmeto</strong></footer>

@@ -25,7 +25,17 @@ type StructArtist struct {
 	DatesLocation map[string][]string `json:"datesLocations"`
 }
 
-var Artist []StructArtist
+type Relation struct {
+	Index []struct {
+		Id            int                 `json:"id"`
+		DatesLocation map[string][]string `json:"datesLocations"`
+	}
+}
+
+var (
+	Artist []StructArtist
+	DL     Relation
+)
 
 func Parser() []StructArtist {
 	url := "https://groupietrackers.herokuapp.com/api/artists"
@@ -42,8 +52,8 @@ func Parser() []StructArtist {
 	return Artist
 }
 
-func ParsRelation(id string, idNum int) {
-	url := "https://groupietrackers.herokuapp.com/api/relation/" + id
+func ParsRelation() Relation {
+	url := "https://groupietrackers.herokuapp.com/api/relation"
 
 	r, err := http.Get(url)
 	checkErr(err)
@@ -53,13 +63,14 @@ func ParsRelation(id string, idNum int) {
 	getRelatoin, err := ioutil.ReadAll(r.Body)
 	checkErr(err)
 
-	err = json.Unmarshal(getRelatoin, &Artist[idNum-1])
+	err = json.Unmarshal(getRelatoin, &DL)
 	checkErr(err)
+	return DL
 }
 
 func CheckNum(id int) error {
-	if id > Artist[len(Artist)-1].Id || id < 1 {
-		return errors.New("Лишнее Братан!")
+	if id > 52 || id < 1 {
+		return errors.New("out of id")
 	}
 	return nil
 }

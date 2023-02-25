@@ -20,6 +20,7 @@ func main() {
 
 	mux.HandleFunc("/", Home)
 	mux.HandleFunc("/artist/", ShowArtist)
+	// mux.HandleFunc("/searchform", SearchGtrack)
 
 	fileServer := http.FileServer(neuteredFileSystem{http.Dir("./ui/static/")})
 	mux.Handle("/static", http.NotFoundHandler())
@@ -55,8 +56,3 @@ func (nfs neuteredFileSystem) Open(path string) (http.File, error) {
 
 	return f, nil
 }
-
-// 5. Обработка URL-запросов в Golang - тут рассказано про id
-// 8. Получаем доступ к статическим файлам — CSS и JS
-// Особенности обработчика статических файлов
-// 12. Внедрение зависимостей в Golang (Dependency Injection) - Сложная тема

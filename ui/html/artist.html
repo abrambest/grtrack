@@ -5,34 +5,37 @@
 
 
 {{define "main"}}
+
 <nav class="navlnk">
     <a class="lnk" href="/">GO home page</a>
 </nav>
+<br>
+<br>
 
 <div class="artistbox">
 
 
     <div class="cardartist">
-        <a href="/artist/{{.Id}}">
+        <a href="/artist/{{.P1.Id}}">
             <br>
-            <img class="artist-img" src="{{.Image}}" alt="artist image">
+            <img class="artist-img" src="{{.P1.Image}}" alt="artist image">
             <br>
             <br>
-            <H2 class="artist-page-name">{{.Name}}</H2>
+            <H2 class="artist-page-name">{{.P1.Name}}</H2>
         </a>
         <div class="artist-page-data">
 
             <H3>
 
-                Started career in {{.CreationDate}}</H3>
+                Started career in {{.P1.CreationDate}}</H3>
             <br>
             Members: <br>
-            {{range .Members}}
+            {{range .P1.Members}}
             {{.}}
             <br>
             {{end}}
             <br>
-            First album date {{.FirstAlbum}}
+            First album date {{.P1.FirstAlbum}}
             <br>
 
 
@@ -42,7 +45,7 @@
 
             <h4>Locations / Concert Dates</h4>
             <br>
-            {{range $key, $value := .DatesLocation}}
+            {{range $key, $value := .P2.DatesLocation}}
             <div class="key">
                 {{$key}}
             </div>
@@ -60,4 +63,3 @@
     </div>
 </div>
 {{end}}
-<footer class="footertwo">Website created in <strong>Golang © by bshayakh, rakhmeto</strong></footer>

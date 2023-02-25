@@ -8,23 +8,28 @@
 
 html,
 .zag{
-  height: 100%;
+    min-height: 100%;
 }
 
 body {
     /* background-color: grey; */
     /* font-family: 'Barlow Condensed'; color: aliceblue; */
     
-    padding: 5%;
-    background-image: url("/static/img/MayanWarrioratNight.jpg"); 
+    padding: 3%;
+    background-image: url("/static/img/Untitled123.jpg"); 
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    padding-bottom: 2%;
+   
+    
     
     
   
+}
+
+html, body {
+    min-height: 100%;
 }
 
 /* body::after{
@@ -50,8 +55,7 @@ h1 a{
     height: 100%;
     /* padding-bottom: 90px; */
     position: relative;
-    min-height: 100%;
-    
+    min-height: calc(100vh - 220px);    
     
 }
 .navlnk{
@@ -73,27 +77,13 @@ footer{
   left: 0;
   bottom: 0;
  
-  height: 80px;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  /* height: 80px; */
+  padding: 1%;
+  /* padding-bottom: 5%; */
   
 }
 
-.footertwo{
-    
-    text-align: center;
-    width: 100%;
-   
-    font-family: 'Barlow Condensed'; color: #3fee2e;
-    position: fixed;
-  left: 0;
-  bottom: 0;
- 
-  height: 80px;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  
-}
+
 
 .box {
     display: flex;
@@ -189,7 +179,7 @@ footer{
     display: flex;
     padding: 2%;
     padding-bottom: 1%;
-    
+    width: auto;
 }
 
 .artist-page-data{
@@ -234,4 +224,94 @@ a {
 .error{
     text-align: center;
     margin: 20%;
+}
+
+@media (max-width: 1100px) {
+
+    .cardartist{
+         width: 90%;
+    }
+   
+    
+}
+
+@media (max-width: 810px) {
+
+    .cardartist{
+         width: 100%;
+    }
+   
+    
+}
+
+@media (max-width: 787px) {
+
+    .cardartist{
+         width: 100%;
+         display: initial;
+
+    }
+
+    .artist-page-data{
+        width: auto;
+    }
+
+    .relations{
+        width: auto;
+    }
+   
+    
+}
+
+.headbox {
+	display: flex;
+	justify-content: space-between;
+}
+
+form {
+
+	padding-top: 9px;
+    text-align: right;
+display: block ruby;
+  
+}
+
+
+
+
+
+.submit {
+    text-decoration: none;
+    border: 2px solid rgb(62, 94, 190);
+    color:rgb(62, 94, 190);
+    padding: 5px 20px;
+    border-radius: 25px;
+    position: relative;
+    transition: all 1s;
+    overflow: hidden;
+  
+
+
+}
+
+
+
+
+
+.submit:hover {
+   
+    color: rgb(19, 2, 179);
+    scale: 110%;
+    
+}
+
+
+.searchline {
+    height: 25px;
+    width: 250px;
+    margin-right: -8px;
+    padding-left: 8px;
+   
+   
+    margin-top: 3px;
 }
