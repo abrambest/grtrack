@@ -127,20 +127,28 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	Info := pkg.Parser()
 	DlInfo := pkg.ParsRelation()
 
+	// type PageData struct {
+	// 	Artist   pkg.StructArtist
+	// 	Relation pkg.Relation
+	// }
+
+	// v := PageData{
+	// 	Artist:   Info[id-1],
+	// 	Relation: DlInfo.Index[id-1], //почему ругается тут?
+	// }
+
 	type PageData struct {
 		Artist   pkg.StructArtist
 		Relation pkg.Relation
 	}
 
 	var relation pkg.Relation
-	relation.Index = append(relation.Index, DlInfo.Index[id-1])
+	relation.Index = append(relation.Index, DlInfo.Index[id-1]) //зачем добавлять в массив, если можно отправить отдельно элемент? или все таки нельзя?
 
 	v := PageData{
 		Artist:   Info[id-1],
 		Relation: relation,
 	}
-
-	// fmt.Println("Eto:", relation.Index)
 
 	err = ts.Execute(w, v)
 
