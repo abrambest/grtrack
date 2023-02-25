@@ -16,26 +16,26 @@
 
 
     <div class="cardartist">
-        <a href="/artist/{{.P1.Id}}">
+        <a href="/artist/{{.Artist.Id}}">
             <br>
-            <img class="artist-img" src="{{.P1.Image}}" alt="artist image">
+            <img class="artist-img" src="{{.Artist.Image}}" alt="artist image">
             <br>
             <br>
-            <H2 class="artist-page-name">{{.P1.Name}}</H2>
+            <H2 class="artist-page-name">{{.Artist.Name}}</H2>
         </a>
         <div class="artist-page-data">
 
             <H3>
 
-                Started career in {{.P1.CreationDate}}</H3>
+                Started career in {{.Artist.CreationDate}}</H3>
             <br>
             Members: <br>
-            {{range .P1.Members}}
+            {{range .Artist.Members}}
             {{.}}
             <br>
             {{end}}
             <br>
-            First album date {{.P1.FirstAlbum}}
+            First album date {{.Artist.FirstAlbum}}
             <br>
 
 
@@ -45,18 +45,20 @@
 
             <h4>Locations / Concert Dates</h4>
             <br>
-            {{range $key, $value := .P2.DatesLocation}}
+            {{range $key, $value := .Relation.Index}}
+            {{range $key2, $value2 := $value.DatesLocation}}
             <div class="key">
-                {{$key}}
+                {{$key2}}
             </div>
             <div class="value">
-                {{range $value}}
+                {{range $value2}}
                 {{.}}
 
                 {{end}}
 
             </div>
             <br>
+            {{end}}
             {{end}}
           
         </div>

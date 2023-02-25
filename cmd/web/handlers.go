@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"grtrack-mygr/pkg"
 	"html/template"
 	"log"
@@ -63,8 +62,18 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	Info := pkg.Parser()
+	DlInfo := pkg.ParsRelation()
 
-	err = ts.Execute(w, Info)
+	type PageData struct {
+		Artist   []pkg.StructArtist
+		Relation pkg.Relation
+	}
+	v := PageData{
+		Artist:   Info,
+		Relation: DlInfo,
+	}
+
+	err = ts.Execute(w, v)
 	if err != nil {
 		log.Println(err.Error())
 		ErrorPage(w, "Internel Server Error", 500)
@@ -117,16 +126,21 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 
 	Info := pkg.Parser()
 	DlInfo := pkg.ParsRelation()
-	
 
-	v := struct {
-		P1 pkg.StructArtist
-		P2 pkg.Relation
-	}{
-		P1: Info[id-1],
-		P2: ???,
+	type PageData struct {
+		Artist   pkg.StructArtist
+		Relation pkg.Relation
 	}
-	fmt.Println(DlInfo.Index)
+
+	var relation pkg.Relation
+	relation.Index = append(relation.Index, DlInfo.Index[id-1])
+
+	v := PageData{
+		Artist:   Info[id-1],
+		Relation: relation,
+	}
+
+	// fmt.Println("Eto:", relation.Index)
 
 	err = ts.Execute(w, v)
 

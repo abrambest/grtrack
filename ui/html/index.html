@@ -13,21 +13,25 @@
 
     </div>
     <datalist id="search-all">
-        {{range .}}
+        {{range .Artist}}
         <option value="{{.Name}}"></option>
 
             {{range .Members}}
         <option value="{{.}} - Members"></option>
             {{end}}
 
-            {{range $key, $value := .DatesLocation}}
-
-        <option value="{{$key}} - Location"></option>
-
-            {{end}}
+            
         <option value="{{.CreationDate}} - Started career date"></option>
         <option value="{{.FirstAlbum}} - First Album date"></option>
 
+            {{end}}
+            {{range $key, $value := .Relation.Index}}
+            {{range $key2, $value2 := $value.DatesLocation}}
+
+        <option value="{{$key2}} - Location"></option>
+        <option value="{{$value2}} - DatesLocation"></option>
+
+            {{end}}
             {{end}}
     </datalist>
 
@@ -39,7 +43,7 @@
 <br>
 <br>
 <div class="box">
-    {{range . }}
+    {{range .Artist }}
     <div class="artist">
         <a href="/artist/{{.Id}}">
             <img class="artist-img" src="{{.Image}}" alt="artist image">
