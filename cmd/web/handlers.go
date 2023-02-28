@@ -23,7 +23,7 @@ func ErrorPage(w http.ResponseWriter, error string, code int) {
 
 	lf, err := template.ParseFiles(files...)
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(code)
@@ -34,7 +34,7 @@ func ErrorPage(w http.ResponseWriter, error string, code int) {
 	})
 
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 }
@@ -45,7 +45,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if r.Method != http.MethodGet {
-		ErrorPage(w, "Method Not Allowed", 405)
+		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
 	}
 	files := []string{
@@ -57,7 +57,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		log.Println(err.Error())
-		ErrorPage(w, "Internal Server Error", 500)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
@@ -76,7 +76,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	err = ts.Execute(w, v)
 	if err != nil {
 		log.Println(err.Error())
-		ErrorPage(w, "Internel Server Error", 500)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 	}
 }
 
@@ -94,7 +94,7 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if r.Method != http.MethodGet {
-		ErrorPage(w, "Method Not Allowed", 405)
+		ErrorPage(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -107,7 +107,7 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 	if err != nil {
 		log.Println(err.Error())
-		ErrorPage(w, "Internal Server Error", 500)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
@@ -127,33 +127,20 @@ func ShowArtist(w http.ResponseWriter, r *http.Request) {
 	Info := pkg.Parser()
 	DlInfo := pkg.ParsRelation()
 
-	// type PageData struct {
-	// 	Artist   pkg.StructArtist
-	// 	Relation pkg.Relation
-	// }
-
-	// v := PageData{
-	// 	Artist:   Info[id-1],
-	// 	Relation: DlInfo.Index[id-1], //почему ругается тут?
-	// }
-
 	type PageData struct {
 		Artist   pkg.StructArtist
-		Relation pkg.Relation
+		Relation map[string][]string
 	}
-
-	var relation pkg.Relation
-	relation.Index = append(relation.Index, DlInfo.Index[id-1]) //зачем добавлять в массив, если можно отправить отдельно элемент? или все таки нельзя?
 
 	v := PageData{
 		Artist:   Info[id-1],
-		Relation: relation,
+		Relation: DlInfo.Index[id-1].DatesLocation,
 	}
 
 	err = ts.Execute(w, v)
 
 	if err != nil {
 		log.Println(err.Error())
-		ErrorPage(w, "Internel Server Error", 500)
+		ErrorPage(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 	}
 }

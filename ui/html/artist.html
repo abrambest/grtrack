@@ -45,20 +45,20 @@
 
             <h4>Locations / Concert Dates</h4>
             <br>
-            {{range $key, $value := .Relation.Index}}
-            {{range $key2, $value2 := $value.DatesLocation}}
+            {{range $key, $value := .Relation}}
+            
             <div class="key">
-                {{$key2}}
+                {{$key}}
             </div>
             <div class="value">
-                {{range $value2}}
+                {{range $value}}
                 {{.}}
 
                 {{end}}
 
             </div>
             <br>
-            {{end}}
+            
             {{end}}
           
         </div>

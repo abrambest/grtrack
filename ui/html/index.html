@@ -14,10 +14,10 @@
     </div>
     <datalist id="search-all">
         {{range .Artist}}
-        <option value="{{.Name}}"></option>
+        <option value="{{.Name}} - artist/band"></option>
 
             {{range .Members}}
-        <option value="{{.}} - Members"></option>
+        <option value="{{.}} - member"></option>
             {{end}}
 
             
